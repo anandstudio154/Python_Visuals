@@ -7,6 +7,8 @@ A visually engaging particle simulation where particles are attracted to the mou
 - Real-time particle motion
 - Mouse interaction (attraction + repulsion)
 - Smooth trailing effects
+- Experience chaos by running for longer duration
+- Press "r" to reset it
 - Built using Python and Pygame
 
 ## How it Works
