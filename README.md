@@ -22,3 +22,13 @@ A visually engaging particle simulation where particles are attracted to the mou
 
 ## Demo
 (Will be added soon)
+
+## Feedback & Suggestions
+I’d really appreciate honest feedback!
+
+You can:
+- Open an Issue for bugs or improvements
+- Suggest new features
+- Point out anything confusing
+
+No need to be polite — I want real reviews.
