@@ -77,8 +77,8 @@ while running:
     for p in particles:
         p.update()
         p.draw()
-    
-    max_speed += 0.0001
+    if max_speed<1.5:
+        max_speed += 0.0001
     screen.blit(glow_surface,(0,0),special_flags=pygame.BLEND_ADD)
     pygame.display.update()
 pygame.quit()
