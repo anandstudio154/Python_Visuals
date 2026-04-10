@@ -1,3 +1,4 @@
+
 import pygame
 from math import *
 import random
@@ -49,9 +50,18 @@ class Particle:
         if self.y<0: self.y=HEIGHT
         if self.y>HEIGHT: self.y=0
     def draw(self):
-        pygame.draw.circle(glow_surface,(0,0,30),(int(self.x),int(self.y)),10)
-        pygame.draw.circle(glow_surface,(0,0,100),(int(self.x),int(self.y)),5)
-        pygame.draw.circle(glow_surface,(100,100,225),(int(self.x),int(self.y)),3)
+        speed = ((self.vx)**2 + (self.vy)**2)**0.5
+        min_s = 0.03
+        max_s = 0.25
+        t = (speed-min_s)/(max_s-min_s)
+        t = max(0,min(1,t))
+#        t = t**0.5
+        r = int(255*t)
+        g = int(255*(1-t))
+        b = 150
+        pygame.draw.circle(glow_surface,(r,g,b),(int(self.x),int(self.y)),10)
+        pygame.draw.circle(glow_surface,(b,r,g),(int(self.x),int(self.y)),5)
+        pygame.draw.circle(glow_surface,(g,b,r),(int(self.x),int(self.y)),3)
 particles = []
 for _ in range(particle_num):
     particles.append(Particle())
@@ -59,11 +69,16 @@ while running:
     screen.blit(fade,(0,0))
     glow_surface.fill((0,0,0))
     for event in pygame.event.get():
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_r:
+                max_speed = 0.3
         if event.type==pygame.QUIT:
             running = False
     for p in particles:
         p.update()
         p.draw()
+    
+    max_speed += 0.0001
     screen.blit(glow_surface,(0,0),special_flags=pygame.BLEND_ADD)
     pygame.display.update()
 pygame.quit()
